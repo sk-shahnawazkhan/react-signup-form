@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Lucida Sans", sans-serif;
+}
+
+.sign-in-link {
+  font-size: 12px;
+  line-height: 20px;
+  color: #000000;
+  text-align: right;
+}
+
+.sign-in-link a {
+  color: #008888;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.sign-in-link a:hover {
+  color: #006363;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.sign-in-link a:active {
+  color: #006363;
+  text-decoration: underline;
+}
