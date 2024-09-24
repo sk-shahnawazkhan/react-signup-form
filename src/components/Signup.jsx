@@ -52,16 +52,20 @@ const styles = {
     width: "100%",
     marginBottom: "20px",
   },
+  borderRed: {
+    border: "1px solid #ea0000",
+  },
 };
 
 function Signup() {
+  const id = React.useId();
   const [formData, setFormData] = React.useState({
     emailAddress: "",
     password: "",
     confirmPassword: "",
   });
 
-  const id = React.useId();
+  const [errorClass, setErrorClass] = React.useState("");
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -75,10 +79,20 @@ function Signup() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (formData.password === formData.confirmPassword) {
-      console.log("Thank you for signing up for @yourcompanyname");
+    if (
+      formData.password === formData.confirmPassword &&
+      formData.password !== "" &&
+      formData.confirmPassword !== ""
+    ) {
+      setErrorClass("");
+      console.log("Thank you for signing up for @yourcompanyname.");
     } else {
-      console.log("Passwords do not match. ");
+      if (formData.password === "" || formData.confirmPassword === "") {
+        console.log("Please enter your password field(s).");
+      } else {
+        console.log("Passwords do not match. ");
+      }
+      setErrorClass("border-red");
     }
   }
 
@@ -121,6 +135,7 @@ function Signup() {
             style={styles.formInput}
             onChange={handleChange}
             value={formData.password}
+            className={errorClass}
           />
 
           <label style={styles.label} htmlFor={`${id}confirmPassword`}>
@@ -133,6 +148,7 @@ function Signup() {
             style={styles.formInput}
             onChange={handleChange}
             value={formData.confirmPassword}
+            className={errorClass}
           />
 
           <button style={styles.formButton}>Sign up</button>

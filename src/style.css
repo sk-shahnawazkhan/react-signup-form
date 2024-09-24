@@ -31,3 +31,7 @@ body {
   color: #006363;
   text-decoration: underline;
 }
+
+.border-red {
+  border: 1px solid #ea0000 !important;
+}
